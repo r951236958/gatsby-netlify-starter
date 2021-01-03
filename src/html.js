@@ -16,6 +16,14 @@ export default function HTML(props) {
           rel="search"
           href="opensearch.xml"
         />
+        <link
+          rel="stylesheet"
+          href="https://fonts.googleapis.com/icon?family=Material+Icons"
+        />
+        <link
+          rel="stylesheet"
+          href="https://fonts.googleapis.com/css?family=Roboto:400,500:700&display=swap"
+        />
         {props.headComponents}
       </head>
       <body {...props.bodyAttributes}>
