@@ -131,5 +131,7 @@ module.exports = {
       },
     },
     "gatsby-plugin-sass",
+    "gatsby-plugin-dark-mode",
+    `gatsby-plugin-feed`,
   ],
 }

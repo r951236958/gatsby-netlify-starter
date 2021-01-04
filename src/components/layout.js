@@ -1,8 +1,8 @@
-import React from "react"
 import { Link } from "gatsby"
+import React from "react"
 import styled from "styled-components"
-import Navbar from "./navbar"
 import { rhythm, scale } from "../utils/typography"
+import Navbar from "./navbar"
 
 class Layout extends React.Component {
   render() {
@@ -54,6 +54,13 @@ class Layout extends React.Component {
       )
     }
     return (
+      <div
+        style={{
+          backgroundColor: 'var(--bg)',
+          color: 'var(--textNormal)',
+          transition: 'color 0.2s ease-out, background 0.2s ease-out',
+        }}
+      >
       <Wrapper>
         <Navbar />
         <div
@@ -73,6 +80,7 @@ class Layout extends React.Component {
           <a href="https://www.gatsbyjs.org">Gatsby</a>
         </Footer>
       </Wrapper>
+      </div>
     )
   }
 }
