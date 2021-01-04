@@ -1,7 +1,7 @@
 import Typography from "typography"
 import bootstrapTheme from "typography-theme-bootstrap"
 //import Wordpress2016 from "typography-theme-wordpress-2016"
-import "../pages/global.scss"
+import "../styles/theme.scss"
 
 //Wordpress2016.overrideThemeStyles = () => {
 //  return {

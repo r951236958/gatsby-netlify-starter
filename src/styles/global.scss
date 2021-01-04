@@ -1,6 +1,11 @@
-@import "./variables";
-@import "./global";
+@import "./theme";
 @import "~react-md/dist/react-md";
+
+@import "~@react-md/theme/dist/color-palette";
+$rmd-theme-light: false;
+$rmd-theme-primary: $rmd-blue-grey-500;
+$rmd-theme-secondary: $rmd-pink-a-200;
+
 @include react-md-utils;
 
 @media (prefers-color-scheme: dark) {
@@ -13,12 +18,4 @@
   :root {
     @include rmd-theme-light;
   }
-}
-
-.dark-theme {
-  @include rmd-theme-dark;
-}
-
-.light-theme {
-  @include rmd-theme-light;
 }

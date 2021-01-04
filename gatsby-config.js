@@ -16,6 +16,8 @@ module.exports = {
     `gatsby-plugin-sharp`,
     `gatsby-plugin-offline`,
     `gatsby-plugin-react-helmet`,
+    `gatsby-plugin-feed-mdx`,
+    `gatsby-plugin-root-import`,
     {
       resolve: "gatsby-plugin-local-search",
       options: {
@@ -58,22 +60,7 @@ module.exports = {
           })),
       },
     },
-    `gatsby-plugin-feed-mdx`,
-    `gatsby-plugin-root-import`,
-    {
-      resolve: `gatsby-source-filesystem`,
-      options: {
-        path: `${__dirname}/content/blog`,
-        name: `blog`,
-      },
-    },
-    {
-      resolve: `gatsby-source-filesystem`,
-      options: {
-        path: `${__dirname}/content/assets`,
-        name: `assets`,
-      },
-    },
+
     {
       resolve: `gatsby-plugin-mdx`,
       options: {
@@ -105,6 +92,21 @@ module.exports = {
       },
     },
     {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        path: `${__dirname}/content/blog`,
+        name: `blog`,
+      },
+    },
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        path: `${__dirname}/content/assets`,
+        name: `assets`,
+      },
+    },
+
+    {
       resolve: `gatsby-plugin-google-analytics`,
       options: {
         // edit below
@@ -130,8 +132,7 @@ module.exports = {
         pathToConfigModule: `src/utils/typography`,
       },
     },
-    "gatsby-plugin-sass",
-    "gatsby-plugin-dark-mode",
-    `gatsby-plugin-feed`,
+    `gatsby-plugin-sass`,
+    `gatsby-plugin-dark-mode`,
   ],
 }

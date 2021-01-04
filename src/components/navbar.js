@@ -1,37 +1,23 @@
 import { AppBar, AppBarAction, AppBarNav, AppBarTitle } from "@react-md/app-bar"
-import { Checkbox, useChecked } from "@react-md/form"
-import {
-  FavoriteBorderFontIcon,
-  FavoriteSVGIcon,
-  MenuSVGIcon,
-  SearchSVGIcon,
-} from "@react-md/material-icons"
+import { Checkbox } from "@react-md/form"
+import { MenuSVGIcon, SearchSVGIcon } from "@react-md/material-icons"
 import { ThemeToggler } from "gatsby-plugin-dark-mode"
 import React from "react"
 import DrawerMenu from "./drawermenu"
 
 const Navbar = () => {
-  const CustomCheckbox = ({
-    defaultChecked = false,
-    onChange: propOnChange,
-    ...props
-  }) => {
-    const [checked, onChange] = useChecked(defaultChecked, propOnChange)
-
-    return (
-      <Checkbox
-        {...props}
-        checked={checked}
-        onChange={onChange}
-        icon={checked ? <FavoriteSVGIcon /> : <FavoriteBorderFontIcon />}
-        disableIconOverlay
-      />
-    )
-  }
   return (
     <ThemeToggler>
       {({ theme, toggleTheme }) => (
-        <AppBar id="simple-usage-app-bar-1" theme="default">
+        <AppBar
+          id="simple-usage-app-bar-1"
+          theme="primary"
+          style={{
+            backgroundColor: "var(--navbar)",
+            color: "var(--navItem)",
+            transition: "color 0.2s ease-out, background 0.2s ease-out",
+          }}
+        >
           <AppBarNav id="simple-usage-nav-1" aria-label="Navigation">
             <MenuSVGIcon />
           </AppBarNav>
@@ -60,56 +46,44 @@ const Navbar = () => {
           <AppBarAction id="simple-usage-search-1" first aria-label="Search">
             <SearchSVGIcon />
           </AppBarAction>
-          <AppBarAction id="simple-usage-search-1" aria-label="Search">
-            <CustomCheckbox
-              id="custom-checkbox-1"
-              name="custom-checkbox"
-              label="Checkbox 1"
-            />
-            <CustomCheckbox
-              id="custom-checkbox-2"
-              name="custom-checkbox"
-              label="Checkbox 2"
-              defaultChecked
-            />
-            <CustomCheckbox
-              id="custom-checkbox-3"
-              name="custom-checkbox"
-              label="Checkbox 3"
-              disabled
-            />
-            {theme === "dark" ? (
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                viewBox="0 0 24 24"
-                fill="currentColor"
-                width="16"
-                height="16"
-              >
-                <path d="M0 0h24v24H0V0z" fill="none" />
-                <path d="M6.76 4.84l-1.8-1.79-1.41 1.41 1.79 1.79zM1 10.5h3v2H1zM11 .55h2V3.5h-2zm8.04 2.495l1.408 1.407-1.79 1.79-1.407-1.408zm-1.8 15.115l1.79 1.8 1.41-1.41-1.8-1.79zM20 10.5h3v2h-3zm-8-5c-3.31 0-6 2.69-6 6s2.69 6 6 6 6-2.69 6-6-2.69-6-6-6zm0 10c-2.21 0-4-1.79-4-4s1.79-4 4-4 4 1.79 4 4-1.79 4-4 4zm-1 4h2v2.95h-2zm-7.45-.96l1.41 1.41 1.79-1.8-1.41-1.41z" />
-              </svg>
-            ) : (
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                viewBox="0 0 24 24"
-                fill="currentColor"
-                width="16"
-                height="16"
-              >
-                <path d="M22.6 11.29L20 8.69V5c0-.55-.45-1-1-1h-3.69l-2.6-2.6a.996.996 0 00-1.41 0L8.69 4H5c-.55 0-1 .45-1 1v3.69l-2.6 2.6a.996.996 0 000 1.41L4 15.3V19c0 .55.45 1 1 1h3.69l2.6 2.6c.39.39 1.02.39 1.41 0l2.6-2.6H19c.55 0 1-.45 1-1v-3.69l2.6-2.6c.39-.39.39-1.03 0-1.42zm-4.68 1.69a5.997 5.997 0 01-3.88 4.66c-1.21.43-2.41.45-3.5.18-.41-.1-.48-.65-.13-.9C11.98 15.84 13 14.04 13 12s-1.02-3.84-2.58-4.92c-.35-.24-.29-.79.13-.9 1.09-.27 2.29-.25 3.5.18 2.02.72 3.54 2.54 3.88 4.66.05.33.07.66.07.98-.01.32-.03.65-.08.98z" />
-              </svg>
-            )}
+          <AppBarAction id="dark-mode-test-1" aria-label="test">
+            <span>{theme === "dark" ? "isDark" : "isLight"}</span>
           </AppBarAction>
 
-          <AppBarAction id="theme-toggle-button" aria-label="themeToggler">
-            <label>
-              <input
-                type="checkbox"
-                onChange={e => toggleTheme(e.target.checked ? "dark" : "light")}
-                checked={theme === "dark"}
-              />{" "}
-            </label>
+          <AppBarAction id="simple-usage-search-1" aria-label="Search">
+            <Checkbox
+              onChange={e => toggleTheme(e.target.checked ? "dark" : "light")}
+              checked={theme === "dark"}
+              icon={
+                theme === "dark" ? (
+                  <svg
+                    className="sunnyIcon"
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 24 24"
+                    fill="currentColor"
+                    width="24"
+                    height="24"
+                    style={{ color: "var(--darkToggle)" }}
+                  >
+                    <path d="M0 0h24v24H0V0z" fill="none" />
+                    <path d="M6.76 4.84l-1.8-1.79-1.41 1.41 1.79 1.79zM1 10.5h3v2H1zM11 .55h2V3.5h-2zm8.04 2.495l1.408 1.407-1.79 1.79-1.407-1.408zm-1.8 15.115l1.79 1.8 1.41-1.41-1.8-1.79zM20 10.5h3v2h-3zm-8-5c-3.31 0-6 2.69-6 6s2.69 6 6 6 6-2.69 6-6-2.69-6-6-6zm0 10c-2.21 0-4-1.79-4-4s1.79-4 4-4 4 1.79 4 4-1.79 4-4 4zm-1 4h2v2.95h-2zm-7.45-.96l1.41 1.41 1.79-1.8-1.41-1.41z" />
+                  </svg>
+                ) : (
+                  <svg
+                    className="brightnessIcon"
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 24 24"
+                    fill="currentColor"
+                    width="24"
+                    height="24"
+                    style={{ color: "var(--lightToggle)" }}
+                  >
+                    <path d="M22.6 11.29L20 8.69V5c0-.55-.45-1-1-1h-3.69l-2.6-2.6a.996.996 0 00-1.41 0L8.69 4H5c-.55 0-1 .45-1 1v3.69l-2.6 2.6a.996.996 0 000 1.41L4 15.3V19c0 .55.45 1 1 1h3.69l2.6 2.6c.39.39 1.02.39 1.41 0l2.6-2.6H19c.55 0 1-.45 1-1v-3.69l2.6-2.6c.39-.39.39-1.03 0-1.42zm-4.68 1.69a5.997 5.997 0 01-3.88 4.66c-1.21.43-2.41.45-3.5.18-.41-.1-.48-.65-.13-.9C11.98 15.84 13 14.04 13 12s-1.02-3.84-2.58-4.92c-.35-.24-.29-.79.13-.9 1.09-.27 2.29-.25 3.5.18 2.02.72 3.54 2.54 3.88 4.66.05.33.07.66.07.98-.01.32-.03.65-.08.98z" />
+                  </svg>
+                )
+              }
+              disableIconOverlay
+            />
           </AppBarAction>
           <AppBarAction id="simple-usage-kebab-1" last aria-label="Actions">
             <DrawerMenu />
