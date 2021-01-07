@@ -1,5 +1,8 @@
 import React from "react"
 import PropTypes from "prop-types"
+//import { debugContextDevtool } from "react-context-devtool"
+
+//const container = document.getElementById("___gatsby")
 
 export default function HTML(props) {
   return (
@@ -47,3 +50,5 @@ HTML.propTypes = {
   body: PropTypes.string,
   postBodyComponents: PropTypes.array,
 }
+
+//debugContextDevtool(container, options)

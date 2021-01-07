@@ -1,21 +1,9 @@
-@import "./theme";
-@import "~react-md/dist/react-md";
-
-@import "~@react-md/theme/dist/color-palette";
-$rmd-theme-light: false;
-$rmd-theme-primary: $rmd-blue-grey-500;
-$rmd-theme-secondary: $rmd-pink-a-200;
+@import "variables";
+@import "~@react-md/layout/dist/mixins";
+@import "~@react-md/states/dist/mixins";
+@import "~@react-md/theme/dist/mixins";
+@import "~@react-md/typography/dist/mixins";
+@import "~@react-md/utils/dist/mixins";
+@import "~@react-md/app-bar/dist/mixins";
 
 @include react-md-utils;
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    @include rmd-theme-dark;
-  }
-}
-
-@media (prefers-color-scheme: light) {
-  :root {
-    @include rmd-theme-light;
-  }
-}

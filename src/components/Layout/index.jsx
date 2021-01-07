@@ -1,8 +1,8 @@
 import { Link } from "gatsby"
 import React from "react"
 import styled from "styled-components"
-import { rhythm, scale } from "../utils/typography"
-import Navbar from "./Navbar"
+import { rhythm, scale } from "../../utils/typography"
+import Navbar from "../Navbar"
 
 class Layout extends React.Component {
   render() {
