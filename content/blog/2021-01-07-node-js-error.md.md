@@ -1,13 +1,13 @@
 ---
+path: node-error
 title: Node.js Error
 date: 2021-01-07T19:17:57.263Z
-cover: assets/node_error.png
-slug: node
-category: node
-tags:
-  - node
+cover: ../assets/node_error.png
 ---
+
 使用`npm run develop`時報錯`Error: listen EADDRINUSE: address already in use :::8000`
+
+![error](../assets/node_error.png "node error!")
 
 解決方法:
 
