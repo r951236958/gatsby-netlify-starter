@@ -8,25 +8,19 @@ import {
   // APP_BAR_OFFSET_PROMINENT_CLASSNAME,
   // APP_BAR_OFFSET_PROMINENT_DENSE_CLASSNAME,
 } from "@react-md/app-bar"
-import { DropdownMenu } from "@react-md/menu"
+//import { DropdownMenu } from "@react-md/menu"
 import { FontIcon } from "@react-md/icon"
 //import cn from "classnames"
 //import { Link } from "gatsby"
 //import { Text } from "@react-md/typography"
-import NavLink from "../NavLink"
 //import { FontIcon, SVGIcon } from "@react-md/icon"
 import React from "react"
 import DarkModeToggle from "../DarkModeToggle"
 // import AppBarTitle from "./AppBarTitle"
-import LinkList from "../LinkList"
+import NavLink from "../NavLink"
 import styles from "./Navbar.module.scss"
 
-const menuItems = [
-  { href: "/about", children: "About" },
-  { href: "/blog/", children: "Blog" },
-]
-
-const Navbar = ({ height }) => {
+const Navbar = ({ height, menuLinks }) => {
   // Navbar in Layout can set height: `dense`, `prominent`, `prominent-dense`
   //const Navbar = ({ height, menuLinks }) => {
   //  const dense = height === "dense" || height === "prominent-dense"
@@ -47,14 +41,7 @@ const Navbar = ({ height }) => {
   return (
     <AppBar id="simple-usage-app-bar-1" theme="primary" fixed height={height}>
       <AppBarNav id="simple-usage-nav-1" aria-label="Navigation">
-        <DropdownMenu
-          id="dropdown-navlinks"
-          items={menuItems}
-          buttonType="icon"
-          aria-label="navbar-dropdown-menu"
-        >
-          <FontIcon>menu</FontIcon>
-        </DropdownMenu>
+        <FontIcon>menu</FontIcon>
       </AppBarNav>
       <AppBarTitle id="simple-usage-title-1" className={styles.titleIcon}>
         <NavLink to="/">
@@ -79,15 +66,17 @@ const Navbar = ({ height }) => {
           </svg>
         </NavLink>
       </AppBarTitle>
-      <AppBarAction
-        id="simple-usage-search-1"
-        first
-        aria-label="darkMode-toggle"
-      >
+      <AppBarAction id="a-toggle" first aria-label="darkMode-toggle">
         <DarkModeToggle />
       </AppBarAction>
+      {menuLinks.map(link => (
+        <NavLink key={link.name} to={link.link}>
+          {link.name}
+        </NavLink>
+      ))}
+
       <AppBarAction id="simple-usage-kebab-1" last aria-label="Actions">
-        <LinkList />
+        <FontIcon aria-label="more icon">more_vert</FontIcon>
       </AppBarAction>
     </AppBar>
   )

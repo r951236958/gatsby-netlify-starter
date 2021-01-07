@@ -13,14 +13,3 @@
   @include rmd-icon-theme-update-var(size, 4rem);
   @include rmd-form-theme-update-var(toggle-inset, 0.85rem);
 }
-
-.darkToggle {
-  @mixin rmd-icon-theme($property, $theme-style: property, $fallback: null) {
-    @include rmd-theme-apply-rmd-var(
-      $property,
-      $theme-style,
-      $rmd-icon-theme-values,
-      icon
-    );
-  }
-}

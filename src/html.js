@@ -1,6 +1,7 @@
 import React from "react"
 import PropTypes from "prop-types"
 //import { debugContextDevtool } from "react-context-devtool"
+import { Configuration } from "@react-md/layout"
 
 //const container = document.getElementById("___gatsby")
 
@@ -30,13 +31,15 @@ export default function HTML(props) {
         {props.headComponents}
       </head>
       <body {...props.bodyAttributes}>
-        {props.preBodyComponents}
-        <div
-          key={`body`}
-          id="___gatsby"
-          dangerouslySetInnerHTML={{ __html: props.body }}
-        />
-        {props.postBodyComponents}
+        <Configuration>
+          {props.preBodyComponents}
+          <div
+            key={`body`}
+            id="___gatsby"
+            dangerouslySetInnerHTML={{ __html: props.body }}
+          />
+          {props.postBodyComponents}
+        </Configuration>
       </body>
     </html>
   )

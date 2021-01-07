@@ -28,14 +28,18 @@ class About extends React.Component {
         <Container>
           <AutoTooltip />
         </Container>
+
         <Container>
-          <input
+          <TextField
+            id="text-field-1"
+            aria-describedby="text-field-1-message"
+            label="Text"
+            placeholder="Copy to clipboard"
             value={this.state.value}
             onChange={({ target: { value } }) =>
               this.setState({ value, copied: false })
             }
           />
-
           <CopyToClipboard
             text={this.state.value}
             onCopy={() => this.setState({ copied: true })}
@@ -46,30 +50,6 @@ class About extends React.Component {
           {this.state.copied ? (
             <span style={{ color: "red", marginLeft: "1rem" }}>
               {this.state.value}
-            </span>
-          ) : null}
-        </Container>
-        <Container>
-          <TextField
-            id="text-field-1"
-            aria-describedby="text-field-1-message"
-            label="Text"
-            placeholder="Copy to clipboard"
-            value2={this.state.value}
-            onChange={({ target: { value2 } }) =>
-              this.setState({ value2, copied2: false })
-            }
-          />
-          <CopyToClipboard
-            text={this.state.value2}
-            onCopy={() => this.setState({ copied2: true })}
-          >
-            <Button themeType="outline">Copy</Button>
-          </CopyToClipboard>
-
-          {this.state.copied2 ? (
-            <span style={{ color: "red", marginLeft: "1rem" }}>
-              {this.state.value2}
             </span>
           ) : null}
         </Container>

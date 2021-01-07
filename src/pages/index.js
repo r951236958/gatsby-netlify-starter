@@ -29,10 +29,10 @@ class IndexPage extends React.Component {
         </p>
         <p>Now go build something great!</p>
         <LinkButton
-          marginTop="35px"
           theme="secondary"
           themeType="contained"
           to="/blog/"
+          style={{ marginTop: "85px" }}
         >
           Go to Blog
         </LinkButton>

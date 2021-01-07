@@ -1,87 +1,99 @@
-import { Link } from "gatsby"
+import { Link, graphql, useStaticQuery } from "gatsby"
 import React from "react"
 import styled from "styled-components"
 import { rhythm, scale } from "../../utils/typography"
 import Navbar from "../Navbar"
 
-class Layout extends React.Component {
-  render() {
-    const { location, title, children } = this.props
-    const rootPath = `${__PATH_PREFIX__}/`
-    const blogPath = `${__PATH_PREFIX__}/blog/`
-    let header
-
-    if (location.pathname === rootPath || location.pathname === blogPath) {
-      header = (
-        <h1
-          style={{
-            ...scale(1.5),
-            marginBottom: rhythm(1.5),
-            marginTop: 0,
-          }}
-        >
-          <Link
-            style={{
-              boxShadow: `none`,
-              textDecoration: `none`,
-              color: `inherit`,
-            }}
-            to={location.pathname === blogPath ? `/blog/` : `/`}
-          >
-            {title}
-          </Link>
-        </h1>
-      )
-    } else {
-      header = (
-        <h3
-          style={{
-            fontFamily: `Montserrat, sans-serif`,
-            marginTop: 0,
-          }}
-        >
-          <Link
-            style={{
-              boxShadow: `none`,
-              textDecoration: `none`,
-              color: `inherit`,
-            }}
-            to={`/blog/`}
-          >
-            {title}
-          </Link>
-        </h3>
-      )
+function Layout({ location, title, children }) {
+  const data = useStaticQuery(graphql`
+    query SiteTitleQuery {
+      site {
+        siteMetadata {
+          title
+          menuLinks {
+            name
+            link
+          }
+        }
+      }
     }
-    return (
-      <div
+  `)
+
+  const rootPath = `${__PATH_PREFIX__}/`
+  const blogPath = `${__PATH_PREFIX__}/blog/`
+  let header
+
+  if (location.pathname === rootPath || location.pathname === blogPath) {
+    header = (
+      <h1
         style={{
-          backgroundColor: "var(--bg)",
-          color: "var(--textNormal)",
-          transition: "color 0.2s ease-out, background 0.2s ease-out",
+          ...scale(1.5),
+          marginBottom: rhythm(1.5),
+          marginTop: 0,
         }}
       >
-        <Wrapper>
-          <Navbar />
-          <div
-            style={{
-              margin: `2rem auto`,
-              maxWidth: rhythm(24),
-              padding: `${rhythm(1.5)} ${rhythm(3 / 4)}`,
-            }}
-          >
-            <header>{header}</header>
-            <main>{children}</main>
-          </div>
-          <Footer>
-            © {new Date().getFullYear()}, Built with
-            {` `}
-            <a href="https://www.gatsbyjs.org">Gatsby</a>
-          </Footer>
-        </Wrapper>
-      </div>
+        <Link
+          style={{
+            boxShadow: `none`,
+            textDecoration: `none`,
+            color: `inherit`,
+          }}
+          to={location.pathname === blogPath ? `/blog/` : `/`}
+        >
+          {title}
+        </Link>
+      </h1>
+    )
+  } else {
+    header = (
+      <h3
+        style={{
+          fontFamily: `Montserrat, sans-serif`,
+          marginTop: 0,
+        }}
+      >
+        <Link
+          style={{
+            boxShadow: `none`,
+            textDecoration: `none`,
+            color: `inherit`,
+          }}
+          to={`/blog/`}
+        >
+          {title}
+        </Link>
+      </h3>
     )
   }
+
+  return (
+    <div
+      style={{
+        backgroundColor: "var(--bg)",
+        color: "var(--textNormal)",
+        transition: "color 0.2s ease-out, background 0.2s ease-out",
+      }}
+    >
+      <Wrapper>
+        <Navbar menuLinks={data.site.siteMetadata.menuLinks} />
+        <div
+          style={{
+            margin: `2rem auto`,
+            maxWidth: rhythm(24),
+            padding: `${rhythm(1.5)} ${rhythm(3 / 4)}`,
+          }}
+        >
+          <header>{header}</header>
+          <main>{children}</main>
+        </div>
+        <Footer>
+          © {new Date().getFullYear()}, Built with
+          {` `}
+          <a href="https://www.gatsbyjs.org">Gatsby</a>
+        </Footer>
+      </Wrapper>
+    </div>
+  )
 }
 
 const Wrapper = styled.div`

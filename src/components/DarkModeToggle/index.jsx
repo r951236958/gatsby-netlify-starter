@@ -1,9 +1,9 @@
 import React from "react"
 import { Checkbox } from "@react-md/form"
-import { FontIcon } from "@react-md/icon"
+//import { FontIcon } from "@react-md/icon"
 import { ThemeToggler } from "gatsby-plugin-dark-mode"
-//import SunnySVGIcon from "./SunnySVGIcon"
-//import BrightnessSVGIcon from "./BrightnessSVGIcon"
+import SunnySVGIcon from "./SunnySVGIcon"
+import BrightnessSVGIcon from "./BrightnessSVGIcon"
 
 //import styles from "./DarkModeToggle.module.scss"
 
@@ -12,15 +12,16 @@ const DarkModeToggle = () => {
     <ThemeToggler>
       {({ theme, toggleTheme }) => (
         <Checkbox
+          id="dark-mode-toggle"
+          name="darkmode-toggle"
+          htmlFor="a-toggle"
           onChange={e => toggleTheme(e.target.checked ? "dark" : "light")}
           checked={theme === "dark"}
           icon={
             theme === "dark" ? (
-              <FontIcon aria-label="turn to light">wb_sunny</FontIcon>
+              <SunnySVGIcon style={{ color: "var(--darkToggle)" }} />
             ) : (
-              <FontIcon aria-label="turn to dark" theme="primary">
-                brightness_4
-              </FontIcon>
+              <BrightnessSVGIcon style={{ color: "var(--lightToggle)" }} />
             )
           }
           disableIconOverlay

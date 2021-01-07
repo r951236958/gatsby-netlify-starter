@@ -4,8 +4,7 @@ import LinkButton from "../components/LinkButton"
 import Bio from "../components/Bio"
 import Layout from "../components/Layout"
 import SEO from "../components/SEO"
-//import Button from "../components/button"
-import SearchPosts from "../components/searchPosts"
+import SearchPosts from "../components/SearchPosts"
 
 class Blog extends React.Component {
   render() {
@@ -27,8 +26,8 @@ class Blog extends React.Component {
         <LinkButton
           theme="primary"
           themeType="contained"
-          marginTop="85px"
           to="/"
+          style={{ marginTop: "85px" }}
         >
           Go Home
         </LinkButton>
