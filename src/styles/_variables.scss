@@ -51,3 +51,9 @@ body.light,
 //  @include rmd-app-bar-action;
 //  @include rmd-utils-rtl-auto(margin-right, "1rem");
 //}
+
+.grid {
+  display: grid;
+  grid-row-gap: 1rem;
+  grid-template-columns: minmax(0, 1fr);
+}

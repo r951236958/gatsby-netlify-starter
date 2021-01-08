@@ -70,9 +70,14 @@ const Navbar = ({ height, menuLinks }) => {
         <DarkModeToggle />
       </AppBarAction>
       {menuLinks.map(link => (
-        <NavLink key={link.name} to={link.link}>
-          {link.name}
-        </NavLink>
+        <AppBarAction
+          key={link.name}
+          id={link.name}
+          aria-label="darkMode-toggle"
+          className={styles.navLink}
+        >
+          <NavLink to={link.link}>{link.name}</NavLink>
+        </AppBarAction>
       ))}
 
       <AppBarAction id="simple-usage-kebab-1" last aria-label="Actions">

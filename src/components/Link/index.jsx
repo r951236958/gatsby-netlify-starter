@@ -1,11 +1,15 @@
 import React from "react"
 import cn from "classnames"
-import { Link } from "gatsby"
+//import { Link as RouterLink } from "gatsby"
+//import { Link as RMDLink } from "@react-md/link"
+import { Link as RouterLink } from "gatsby"
 import { buttonThemeClassNames } from "@react-md/button"
 
-import styles from "./WithButtonStyles.module.scss"
+import styles from "./Link.module.scss"
 
-const LinkButton = ({
+//const NavLink = props => <RMDLink component={RouterLink} {...props} />
+
+const Link = ({
   className,
   theme,
   themeType,
@@ -14,7 +18,7 @@ const LinkButton = ({
   children,
   ...props
 }) => (
-  <Link
+  <RouterLink
     {...props}
     className={buttonThemeClassNames({
       disabled,
@@ -25,7 +29,7 @@ const LinkButton = ({
     })}
   >
     {children}
-  </Link>
+  </RouterLink>
 )
 
-export default LinkButton
+export default Link
