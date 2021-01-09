@@ -1,0 +1,6 @@
+@import "~@react-md/theme/dist/mixins";
+@import "~@react-md/form/dist/mixins";
+
+.input {
+  $rmd-form-text-active-color: var($rmd-theme-secondary);
+}

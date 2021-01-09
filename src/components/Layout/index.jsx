@@ -3,6 +3,7 @@ import React from "react"
 import styled from "styled-components"
 import { rhythm, scale } from "../../utils/typography"
 import Navbar from "../Navbar"
+import { AppSizeListener } from "@react-md/utils"
 
 function Layout({ location, title, children }) {
   const data = useStaticQuery(graphql`
@@ -67,32 +68,34 @@ function Layout({ location, title, children }) {
   }
 
   return (
-    <div
-      style={{
-        backgroundColor: "var(--bg)",
-        color: "var(--textNormal)",
-        transition: "color 0.2s ease-out, background 0.2s ease-out",
-      }}
-    >
-      <Wrapper>
-        <Navbar menuLinks={data.site.siteMetadata.menuLinks} />
-        <div
-          style={{
-            margin: `2rem auto`,
-            maxWidth: rhythm(24),
-            padding: `${rhythm(1.5)} ${rhythm(3 / 4)}`,
-          }}
-        >
-          <header>{header}</header>
-          <main>{children}</main>
-        </div>
-        <Footer>
-          © {new Date().getFullYear()}, Built with
-          {` `}
-          <a href="https://www.gatsbyjs.org">Gatsby</a>
-        </Footer>
-      </Wrapper>
-    </div>
+    <AppSizeListener>
+      <div
+        style={{
+          backgroundColor: "var(--bg)",
+          color: "var(--textNormal)",
+          transition: "color 0.2s ease-out, background 0.2s ease-out",
+        }}
+      >
+        <Wrapper>
+          <Navbar menuLinks={data.site.siteMetadata.menuLinks} />
+          <div
+            style={{
+              margin: `2rem auto`,
+              maxWidth: rhythm(24),
+              padding: `${rhythm(1.5)} ${rhythm(3 / 4)}`,
+            }}
+          >
+            <header>{header}</header>
+            <main>{children}</main>
+          </div>
+          <Footer>
+            © {new Date().getFullYear()}, Built with
+            {` `}
+            <a href="https://www.gatsbyjs.org">Gatsby</a>
+          </Footer>
+        </Wrapper>
+      </div>
+    </AppSizeListener>
   )
 }
 

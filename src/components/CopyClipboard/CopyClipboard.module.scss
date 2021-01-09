@@ -1,0 +1,323 @@
+// sass-lint:disable class-name-format
+//mixin
+
+//@mixin rmd-text-field-container {
+//  @include rmd-transition(standard);
+//  @include rmd-form-theme(height, text-height);
+//
+//  align-items: center;
+//  display: flex;
+//  position: relative;
+//  transition: border-color $rmd-transition-standard-time;
+//
+//  &--hoverable:hover {
+//    @include rmd-form-theme(border-color, text-border-hover-color);
+//  }
+//
+//  &--inline {
+//    display: inline-flex;
+//  }
+//
+//  &--label {
+//    @include rmd-form-theme-update-var(
+//      text-height,
+//      rmd-form-theme-var(text-label-height)
+//    );
+//  }
+//
+//  &--error {
+//    @include rmd-icon-theme-update-var(color, rmd-form-theme-var(error-color));
+//    @include rmd-form-theme-update-var(
+//      text-active-color,
+//      rmd-form-theme-var(error-color)
+//    );
+//    @include rmd-form-theme-update-var(
+//      text-border-color,
+//      rmd-form-theme-var(error-color)
+//    );
+//    @include rmd-form-theme-update-var(
+//      text-border-hover-color,
+//      rmd-form-theme-var(error-hover-color)
+//    );
+//  }
+//
+//  &--disabled {
+//    @include rmd-icon-theme-update-var(
+//      color,
+//      rmd-form-theme-var(disabled-color)
+//    );
+//  }
+//
+//  &--underline {
+//    @if $rmd-text-field-underline-padding {
+//      @include rmd-form-theme-update-var(
+//        text-padding-left,
+//        $rmd-text-field-underline-padding
+//      );
+//      @include rmd-form-theme-update-var(
+//        text-padding-right,
+//        $rmd-text-field-underline-padding
+//      );
+//    }
+//    @include rmd-form-theme(border-color, text-border-color);
+//
+//    border-bottom-style: solid;
+//    border-bottom-width: $rmd-text-field-border-width;
+//
+//    &::after {
+//      @include rmd-transition(standard);
+//      @include rmd-form-theme(background-color, text-active-color);
+//
+//      bottom: -$rmd-text-field-border-width;
+//      content: '';
+//      height: $rmd-text-field-border-width-active;
+//      left: 0;
+//      position: absolute;
+//      right: 0;
+//      transform: scale(0);
+//      transition: transform $rmd-transition-standard-time;
+//      z-index: 1;
+//    }
+//  }
+//
+//  &--underline-labelled {
+//    @include rmd-form-theme-update-var(
+//      text-padding-top,
+//      $rmd-text-field-underline-label-padding-top
+//    );
+//    @include rmd-form-theme-update-var(
+//      addon-margin-top,
+//      $rmd-text-field-addon-margin
+//    );
+//  }
+//
+//  &--filled {
+//    @include rmd-form-theme-update-var(
+//      text-padding-left,
+//      $rmd-text-field-filled-padding
+//    );
+//    @include rmd-form-theme-update-var(
+//      text-padding-right,
+//      $rmd-text-field-filled-padding
+//    );
+//    @include rmd-form-theme-update-var(
+//      label-left-offset,
+//      $rmd-text-field-filled-padding
+//    );
+//    @include rmd-form-theme(background-color, text-filled-color);
+//    @include rmd-states-surface($clickable: false);
+//
+//    border-top-left-radius: $rmd-text-field-filled-border-radius;
+//    border-top-right-radius: $rmd-text-field-filled-border-radius;
+//  }
+//
+//  &--underline-left::after {
+//    transform-origin: left;
+//  }
+//
+//  &--underline-center::after {
+//    transform-origin: center;
+//  }
+//
+//  &--underline-right::after {
+//    transform-origin: right;
+//  }
+//
+//  &--underline-active::after {
+//    transform: scale(1);
+//  }
+//
+//  &--underline-left-addon {
+//    $calc-string: '#{rmd-icon-theme-var(size)} + #{$rmd-text-field-underline-label-left-offset * 2}';
+//    @if $rmd-text-field-underline-padding {
+//      $calc-string: '#{$calc-string} + #{$rmd-text-field-underline-padding}';
+//    }
+//
+//    @include rmd-form-theme-update-var(
+//      text-padding-left,
+//      calc(#{$calc-string})
+//    );
+//    @include rmd-form-theme-update-var(
+//      label-left-offset,
+//      $rmd-text-field-underline-label-left-offset
+//    );
+//  }
+//
+//  &--underline-right-addon {
+//    $calc-string: '#{rmd-icon-theme-var(size)} + #{$rmd-text-field-underline-label-left-offset * 2}';
+//    @if $rmd-text-field-underline-padding {
+//      $calc-string: '#{$calc-string} + #{$rmd-text-field-underline-padding}';
+//    }
+//
+//    @include rmd-form-theme-update-var(
+//      text-padding-right,
+//      calc(#{$calc-string})
+//    );
+//  }
+
+//  &--outline {
+//    @include rmd-form-theme-update-var(
+//      text-padding-left,
+//      $rmd-text-field-outline-padding
+//    );
+//    @include rmd-form-theme-update-var(
+//      text-padding-right,
+//      $rmd-text-field-outline-padding
+//    );
+//    @include rmd-form-theme-update-var(
+//      label-left-offset,
+//      $rmd-text-field-outline-padding - $rmd-label-floating-padding
+//    );
+//    @include rmd-form-theme-update-var(label-top-offset, -50%);
+//    @include rmd-form-theme-update-var(
+//      label-active-padding,
+//      0 $rmd-label-floating-padding
+//    );
+//    @include rmd-form-theme-update-var(
+//      label-active-background-color,
+//      rmd-theme-var(background)
+//    );
+//    @include rmd-form-theme(border-color, text-border-color);
+
+//    border-radius: $rmd-text-field-border-radius;
+//    border-style: solid;
+//    border-width: $rmd-text-field-border-width;
+
+//    &::after {
+//      @include rmd-transition(standard);
+//      @include rmd-utils-pseudo-element;
+//
+//      box-shadow: 0 0 0 $rmd-text-field-border-width-active
+//        rmd-form-theme-var(text-active-color);
+//      //      opacity: 0;
+//      //      transition: opacity $rmd-transition-standard-time;
+//    }
+//  }
+
+//  &--outline-active::after {
+//    opacity: 1;
+//  }
+//
+//  &--outline-left {
+//    $outline-offset: calc(
+//      #{rmd-icon-theme-var(size)} + #{$rmd-text-field-outline-padding + $rmd-text-field-addon-margin}
+//    );
+//
+//    @include rmd-form-theme-update-var(text-padding-left, $outline-offset);
+//  }
+//
+//  &--outline-right {
+//    $outline-offset: calc(
+//      #{rmd-icon-theme-var(size)} + #{$rmd-text-field-addon-margin * 2}
+//    );
+//
+//    @include rmd-form-theme-update-var(text-padding-right, $outline-offset);
+//  }
+//
+//  &--dense {
+//    @include rmd-form-theme-update-var(
+//      text-height,
+//      rmd-form-theme-var(text-placeholder-dense-height)
+//    );
+//  }
+//
+//  &--dense-label {
+//    @include rmd-form-theme-update-var(
+//      text-height,
+//      rmd-form-theme-var(text-label-dense-height)
+//    );
+//  }
+//
+//  &--dense-placeholder {
+//    @include rmd-form-theme-update-var(
+//      text-padding-top,
+//      $rmd-text-field-underline-dense-padding-top
+//    );
+//  }
+//}
+//$rmd-form-theme-values: (
+//  error-color: $rmd-form-error-color,
+//  error-hover-color: $rmd-form-error-hover-color,
+//  active-color: $rmd-form-active-color,
+//  disabled-color: $rmd-form-disabled-color,
+//  toggle-inset: $rmd-toggle-inset,
+//  toggle-dense-inset: $rmd-toggle-dense-inset,
+//  indeterminate-height: $rmd-checkbox-indeterminate-height,
+//  indeterminate-dense-height: $rmd-checkbox-indeterminate-dense-height,
+//  track-background-color: $rmd-switch-track-background-color,
+//  floating-top: $rmd-label-floating-top,
+//  floating-dense-top: $rmd-label-floating-dense-top,
+//  addon-top: auto,
+//  addon-margin-top: 0px,
+//  label-left-offset: 0px,
+//  label-top-offset: 0px,
+//  label-active-padding: 0px,
+//  label-active-background-color: transparent,
+//  text-padding-left: 0px,
+//  text-padding-right: 0px,
+//  text-padding-top: 0px,
+//  text-offset: 0px,
+//  text-active-color: $rmd-text-field-active-color,
+//  text-border-color: $rmd-text-field-border-color,
+//  text-border-hover-color: $rmd-text-field-border-hover-color,
+//  text-filled-color: $rmd-text-field-filled-background-color,
+//  text-height: $rmd-text-field-height,
+//  text-label-height: $rmd-text-field-label-height,
+//  text-label-dense-height: $rmd-text-field-label-dense-height,
+//  text-placeholder-height: $rmd-text-field-height,
+//  text-placeholder-dense-height: $rmd-text-field-dense-height,
+//  textarea-padding: $rmd-textarea-vertical-padding,
+//) !default;
+@import "~@react-md/divider/dist/mixins";
+@import "~@react-md/theme/dist/mixins";
+@import "~@react-md/form/dist/mixins";
+
+$rmd-theme-primary: $rmd-teal-500;
+$rmd-theme-secondary: $rmd-pink-a-200;
+
+.container {
+  @include rmd-theme-update-var(background, $rmd-white-base);
+  @include rmd-theme-update-var(
+    text-primary-on-background,
+    rgba($rmd-black-base, 0.87)
+  );
+  @include rmd-theme-update-var(primary, $rmd-blue-grey-500);
+  @include rmd-theme-update-var(on-primary, $rmd-white-base);
+  @include rmd-theme-update-var(secondary, $rmd-orange-a-200);
+  @include rmd-theme-update-var(on-secondary, $rmd-black-base);
+  @include rmd-divider-theme-update-var(
+    background-color,
+    rmd-divider-theme-var(background-color-on-light)
+  );
+
+  @include rmd-theme(background-color, background);
+  @include rmd-theme(color, text-primary-on-background);
+
+  padding: 2rem 1.5rem;
+  text-align: center;
+
+  h6 {
+    margin: 0.5em 0;
+    padding: 0.25em 0;
+  }
+}
+
+.defaultPrimary {
+  background-color: $rmd-theme-primary;
+  color: $rmd-theme-on-primary;
+}
+
+.defaultSecondary {
+  background-color: $rmd-theme-secondary;
+  color: $rmd-theme-on-secondary;
+}
+
+.themePrimary {
+  @include rmd-theme(background-color, primary);
+  @include rmd-theme(color, on-primary);
+}
+
+.themeSecondary {
+  @include rmd-theme(background-color, secondary);
+  @include rmd-theme(color, on-secondary);
+}
