@@ -11,7 +11,10 @@ cover: ../assets/node_error.png
 
 解決方法:
 
-```
+<div className="gatsby-highlight">
+<pre><code>
+
+```bash
 $ lsof -i tcp:8000 #查詢被佔用的port
 
 # Option 1.
@@ -23,5 +26,9 @@ $ kill -9 **** #佔用的PID
 $ pkill node #如果佔用port的都是node, 全部刪除
 
 ```
+
+</code>
+</pre>
+</div>
 
 可以再次運行`npm run develop`
