@@ -33,6 +33,13 @@ module.exports = {
   plugins: [
     `gatsby-plugin-netlify-cms`,
     `gatsby-plugin-styled-components`,
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        name: `images`,
+        path: path.join(__dirname, `src`, `images`),
+      },
+    },
     `gatsby-transformer-sharp`,
     `gatsby-plugin-sharp`,
     `gatsby-plugin-offline`,
@@ -208,7 +215,7 @@ module.exports = {
               languageExtensions: [
                 {
                   language: "superscript",
-                  extend: ["javascript","markdown", "css", "bash", "jsx"],
+                  extend: "javascript",
                   definition: {
                     superscript_types: /(SuperType)/,
                   },
@@ -232,8 +239,9 @@ module.exports = {
               escapeEntities: {},
               plugins: [
                 require.resolve(
-                  'prismjs/plugins/copy-to-clipboard/prism-copy-to-clipboard'
+                  "prismjs/plugins/copy-to-clipboard/prism-copy-to-clipboard"
                 ),
+                require.resolve("prismjs/plugins/toolbar/prism-toolbar"),
               ],
             },
           },
@@ -284,6 +292,5 @@ module.exports = {
     },
     `gatsby-plugin-sass`,
     `gatsby-plugin-dark-mode`,
-    
   ],
 }
