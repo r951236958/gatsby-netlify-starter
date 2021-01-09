@@ -12,7 +12,7 @@ cover: ../assets/node_error.png
 解決方法:
 
 <div className="gatsby-highlight">
-<pre><code>
+<pre className="toolbar"><code>
 
 ```bash
 $ lsof -i tcp:8000 #查詢被佔用的port

@@ -1,11 +1,29 @@
+import Highlight, { defaultProps } from "prism-react-renderer"
+import Prism from "prismjs"
+import PrismTheme from "prismjs/themes/prism-okaidia.css"
 import React from "react"
-import LinkList from "../components/LinkList"
-import Link from "../components/Link"
 import Layout from "../components/Layout"
+import Link from "../components/Link"
+import LinkList from "../components/LinkList"
 import SEO from "../components/SEO"
 
 const IndexPage = ({ location }) => {
   const siteTitle = "Gatsby Starter Personal Website"
+
+  const code = `import React, { useEffect } from "react";
+
+  export default function Code({ code, language }) {
+    return (
+      <div className="Code">
+        <pre>
+          <code>{code}</code>
+        </pre>
+      </div>
+    );`
+
+  React.useEffect(() => {
+    Prism.highlightAll()
+  })
 
   return (
     <Layout location={location} title={siteTitle}>
@@ -23,6 +41,26 @@ const IndexPage = ({ location }) => {
         default starter blog running on Netlify CMS.
       </p>
       <p>Now go build something great!</p>
+      <Highlight
+        Prism={Prism}
+        theme={PrismTheme}
+        {...defaultProps}
+        code={code}
+        language="jsx"
+      >
+        {({ className, style, tokens, getLineProps, getTokenProps }) => (
+          <pre className={className} style={PrismTheme}>
+            {tokens.map((line, i) => (
+              <div {...getLineProps({ line, key: i })}>
+                {line.map((token, key) => (
+                  <span {...getTokenProps({ token, key })} />
+                ))}
+              </div>
+            ))}
+          </pre>
+        )}
+      </Highlight>
+      ,
       <Link
         theme="secondary"
         themeType="contained"

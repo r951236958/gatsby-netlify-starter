@@ -1,4 +1,6 @@
 @import "~@react-md/button/dist/mixins";
+@import "~@react-md/theme/dist/mixins";
+@import "~@react-md/utils/dist/mixins";
 
 .link {
   @include rmd-button-theme(color);
