@@ -8,6 +8,9 @@ body.light {
   --lightToggle: #424242;
   --border-color: #424242;
   background-color: var(--bg);
+  --btn-bg: var(--bg);
+  --btnText: var(--textLink);
+  --btn-border: var(--border-color);
 }
 
 body.dark {
@@ -21,6 +24,9 @@ body.dark {
   --darkToggle: #ffeb3b;
   --lightToggle: #fefefe;
   --border-color: #ddd;
+  --btn-bg: var(--bg);
+  --btnText: var(--textLink);
+  --btn-border: var(--border-color);
 }
 
 .gatsby-highlight-code-line {

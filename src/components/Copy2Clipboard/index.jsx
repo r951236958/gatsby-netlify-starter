@@ -1,8 +1,9 @@
-import React from "react"
+import React, { useState } from "react"
 import { Text } from "@react-md/typography"
 import { Button } from "@react-md/button"
-import { FontIcon } from "@react-md/icon"
+import { FontIcon, TextIconSpacing } from "@react-md/icon"
 import styled from "styled-components"
+
 import CopyToClipboard from "@uxui/copy-to-clipboard-react"
 
 const Pane = styled("div")({
@@ -78,21 +79,29 @@ const Copy2Clipboard = () => {
                 </Text>
                 <Button
                   buttonType="icon"
-                  theme="clear"
+                  theme="secondary"
                   role="button"
                   onClick={copyOnClick}
                   tabIndex={0}
                   onKeyDown={copyOnKeyPress}
                 >
-                  <FontIcon>content_paste</FontIcon>
-                  {copied && (
-                    <Tooltip
-                      role="tooltip"
-                      aria-describedby="copied ETH address!"
-                    >
-                      Copied
-                    </Tooltip>
-                  )}
+                  <TextIconSpacing
+                    icon={
+                      copied ? (
+                        <>
+                          <FontIcon>assignment_turned_in</FontIcon>
+                          <Tooltip
+                            role="tooltip"
+                            aria-describedby="copied ETH address!"
+                          >
+                            Copied
+                          </Tooltip>
+                        </>
+                      ) : (
+                        <FontIcon>content_paste</FontIcon>
+                      )
+                    }
+                  ></TextIconSpacing>
                 </Button>
               </Pane>
             </Container>

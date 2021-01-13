@@ -275,31 +275,75 @@
 $rmd-theme-primary: $rmd-teal-500;
 $rmd-theme-secondary: $rmd-pink-a-200;
 
+//.container {
+//  //@include rmd-theme-update-var(background, $rmd-white-base);
+//  @include rmd-theme-update-var(
+//    text-primary-on-background,
+//    rgba($rmd-black-base, 0.87)
+//  );
+//  @include rmd-theme-update-var(primary, $rmd-blue-grey-500);
+//  @include rmd-theme-update-var(on-primary, $rmd-white-base);
+//  @include rmd-theme-update-var(secondary, $rmd-orange-a-200);
+//  @include rmd-theme-update-var(on-secondary, $rmd-black-base);
+//  @include rmd-divider-theme-update-var(
+//    background-color,
+//    rmd-divider-theme-var(background-color-on-light)
+//  );
+//
+//  @include rmd-theme(background-color, background);
+//  @include rmd-theme(color, text-primary-on-background);
+//
+//  padding: 2rem 1.5rem;
+//  text-align: center;
+//
+//  h6 {
+//    margin: 0.5em 0;
+//    padding: 0.25em 0;
+//  }
+//}
+
 .container {
-  @include rmd-theme-update-var(background, $rmd-white-base);
-  @include rmd-theme-update-var(
-    text-primary-on-background,
-    rgba($rmd-black-base, 0.87)
-  );
-  @include rmd-theme-update-var(primary, $rmd-blue-grey-500);
-  @include rmd-theme-update-var(on-primary, $rmd-white-base);
-  @include rmd-theme-update-var(secondary, $rmd-orange-a-200);
-  @include rmd-theme-update-var(on-secondary, $rmd-black-base);
-  @include rmd-divider-theme-update-var(
-    background-color,
-    rmd-divider-theme-var(background-color-on-light)
-  );
+  max-width: 480px;
+  margin: 10px auto;
+}
 
-  @include rmd-theme(background-color, background);
-  @include rmd-theme(color, text-primary-on-background);
+.copyText {
+  margin-bottom: 0;
+}
 
-  padding: 2rem 1.5rem;
-  text-align: center;
+.pane {
+  padding: 1rem 2rem 1rem 1rem;
+  background-color: var(--bg);
+  border-radius: 5px;
+  border: 1px solid var(--border-color);
+  display: flex;
+  justify-content: space-between;
+  position: relative;
+  font-family: sans-serif;
+  font-size: 16px;
+}
 
-  h6 {
-    margin: 0.5em 0;
-    padding: 0.25em 0;
-  }
+.tooltip {
+  background-color: #111111;
+  color: #ffffff;
+  position: absolute;
+  top: -25px;
+  right: -10px;
+  font-weight: 0;
+  font-size: 12px;
+  padding: 4px 5px;
+  
+  &::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 0;
+    border: 5px solid transparent;
+    border-top-color: #111111;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+  };
 }
 
 .defaultPrimary {
@@ -320,4 +364,8 @@ $rmd-theme-secondary: $rmd-pink-a-200;
 .themeSecondary {
   @include rmd-theme(background-color, secondary);
   @include rmd-theme(color, on-secondary);
+}
+
+.copyIcon {
+  margin-right: 0.5rem;
 }
