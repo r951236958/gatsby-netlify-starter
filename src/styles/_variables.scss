@@ -60,6 +60,6 @@ body.light,
 }
 
 .elevation {
-  @include rmd-elevation(5);
-  @include rmd-theme-dark-elevation(5, true);
+  @include rmd-elevation(12);
+  @include rmd-theme-dark-elevation(12, true);
 }

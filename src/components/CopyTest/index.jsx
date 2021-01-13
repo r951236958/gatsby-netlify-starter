@@ -3,24 +3,25 @@ import {
   Checkbox,
   Fieldset,
   Form,
-
   Radio,
   Select,
   TextField,
-  useChoice
+  useChoice,
+  useChecked,
 } from "@react-md/form"
 import { FontIcon } from "@react-md/icon"
 import { Grid } from "@react-md/utils"
 import { upperFirst } from "lodash"
-import React, { useState } from "react"
+import React, { useCallback, useState } from "react"
 import ReactClipboard from "react-clipboardjs-copy"
 import { CopyToClipboard } from "react-copy-to-clipboard"
 import ReactTooltip from "react-tooltip"
 //import { Button } from "@react-md/button"
 import styled from "styled-components"
-import FormSelect from "../FormSelect"
+//import FormSelect from "../FormSelect"
 //import Button from "../Button"
-import styles from "./CopyTest.module.scss"
+
+const options = ["16.8.0", "16.7.0", "16.6.0", "16.5.0"]
 
 const FAVORITE_VERSION = ["v-16.8", "v-16.7", "v-16.6", "v-16.5"]
 
@@ -43,9 +44,10 @@ const Copied = styled("span")({
   margin: "auto 1rem",
 })
 
-const Wrapper = styled.section`
-  padding: 4em;
-  background: papayawhip;
+const GridWrapper = styled.section`
+  display: grid;
+  grid-row-gap: 1rem;
+  grid-template-columns: minmax(0, 1fr);
 `
 
 const BoxSpace = styled("div")({
@@ -83,6 +85,7 @@ const CopyTest = ({
   const [version, handleVersionChange] = useChoice("auto")
   const [copied, setCopied] = useState(false)
   const [value, setValue] = useState("")
+  const [selectValue, setSelectValue] = useState("")
   //const [copyTimeOut, setCopyTimeout] = useState(0)
   //const [count, setCount] = useState(0)
   const [state, setState] = useState({
@@ -114,10 +117,16 @@ const CopyTest = ({
     setInputValue(event.target.value)
   }
 
+  const handleSelectChange = useCallback((nextValue, _option) => {
+    setSelectValue(nextValue)
+  }, [])
+
+  const [disableMovementChange, handleMovementChange] = useChecked(false)
+
   return (
     <>
-      <div className="test">
-        <div className={styles.container}>
+      <div>
+        <GridWrapper>
           <Button theme="secondary" buttonType="icon">
             {copied ? (
               <FontIcon>check_box</FontIcon>
@@ -182,7 +191,14 @@ const CopyTest = ({
               />
               <Fieldset legend="Favorite version">
                 <Grid columns={2} phoneColumns={1}>
-                <FormSelect />
+                  <Select
+                    label="Version"
+                    id="custom-select-1"
+                    options={options}
+                    value={selectValue}
+                    onChange={handleSelectChange}
+                    disableMovementChange={disableMovementChange}
+                  />
                 </Grid>
               </Fieldset>
               <Fieldset legend="Left Addon Behavior">
@@ -245,7 +261,7 @@ const CopyTest = ({
                   />
                 </Grid>
               </Fieldset>
-              
+
               <label>
                 <div className="heading">Favorite version</div>
 
@@ -263,7 +279,7 @@ const CopyTest = ({
             </Fieldset>
           </Form>
           <pre>{JSON.stringify(state, null, 2)}</pre>
-        </div>
+        </GridWrapper>
         <BoxSpace>
           <Box data-tip data-for="happyFace">
             <Face>d(`･∀･)b</Face>
@@ -324,9 +340,7 @@ const CopyTest = ({
             }}
             aria-label="this is an element attr aria-label"
           >
-            <Button  themeType="contained">
-              Copy
-            </Button>
+            <Button themeType="contained">Copy</Button>
           </ReactClipboard>
         </section>
 
