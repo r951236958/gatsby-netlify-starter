@@ -1,19 +1,23 @@
-import React, { useState } from "react"
-import { FontIcon, TextIconSpacing } from "@react-md/icon"
 import { Button } from "@react-md/button"
-import { List, ListItem } from "@react-md/list"
 import { Form, TextField } from "@react-md/form"
-import { Grid, GridCell } from "@react-md/utils"
+import { FontIcon, TextIconSpacing } from "@react-md/icon"
+import { List, ListItem } from "@react-md/list"
 import { Text, TextContainer } from "@react-md/typography"
-
-import CopyTooltip from "./CopyTooltip"
-
+import { Grid, GridCell } from "@react-md/utils"
+import React, { useRef, useState } from "react"
 import ReactTooltip from "react-tooltip"
 import useClipboard from "react-use-clipboard"
-import CopyToClipboard from "react-copy-to-clipboard"
-
 import styled from "styled-components"
 import styles from "./CopyClipboard.module.scss"
+import CopyTooltip from "./CopyTooltip"
+
+
+const Copied = styled("span")({
+  color: "red",
+  margin: "auto 1rem",
+})
+
+
 
 const CopyContainer = styled("div")({
   maxWidth: "360px",
@@ -24,9 +28,10 @@ const StyledIcon = styled(FontIcon)({
 })
 
 const CopyClipboard = () => {
-  const [copySuccess, setSuccess] = useState(false)
+  if (typeof window === "undefined") return null
+  //const [copySuccess, setSuccess] = useState(false)
+  const [value, setValue] = React.useState("")
   const [inputValue, setInputValue] = useState({
-    value: "",
     valueA: "nick.l@sconsults.net",
     valueB: "nick.l@auxworld.net",
     copied: false,
@@ -45,11 +50,45 @@ const CopyClipboard = () => {
     successDuration: 2000,
   })
 
-  const onCopySusses = () => {
-    setSusses({ copySuccess: true })
-  }
+  
+
+  const [copySuccess, setCopySuccess] = useState('');
+  const textAreaRef = useRef(null);
+
+  function copyToClipboard(e) {
+    textAreaRef.current.select();
+    document.execCommand('copy');
+    // This is just personal preference.
+    // I prefer to not show the the whole text area selected.
+    e.target.focus();
+    setCopySuccess('Copied!');
+  };
   return (
     <div className={styles.container}>
+    {
+       /* Logical shortcut for only displaying the 
+          button if the copy command exists */
+       document.queryCommandSupported('copy') &&
+        <div>
+          <Button theme="secondary" buttonType="icon" onClick={copyToClipboard}>
+          {isCopied ? (
+          <FontIcon>check_box</FontIcon>
+        ) : (
+          <FontIcon>check_box_outline_blank</FontIcon>
+        )}
+        </Button> 
+        <Copied>{copySuccess}</Copied>
+        </div>
+      }
+      <Form>
+        <div>Input Value: {value}</div>
+        <TextField
+          value={value}
+          label="Label"
+          placeholder="輸入文字"
+          onChange={onChange}
+        />
+        </Form>
       <Form>
         <Grid columns={3} desktopColumns={3} largeDesktopColumns={3}>
           <GridCell colSpan="4">

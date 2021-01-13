@@ -1,11 +1,12 @@
-import React from "react"
-import Layout from "../components/Layout"
-import SEO from "../components/SEO"
-import CustomSelect from "../components/CustomSelect"
-import Copy2Clipboard from "../components/Copy2Clipboard"
-import ListDemo from "../components/ListDemo"
 //import CopyClipboard from "../components/CopyClipboard"
 import { AppSizeListener } from "@react-md/utils"
+import React from "react"
+import Copy2Clipboard from "../components/Copy2Clipboard"
+//import CopyClipboard from "../components/CopyClipboard"
+import CustomSelect from "../components/CustomSelect"
+import Layout from "../components/Layout"
+import ListDemo from "../components/ListDemo"
+import SEO from "../components/SEO"
 
 const About = ({ location }) => {
   const siteTitle = "About Page"

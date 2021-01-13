@@ -1,15 +1,17 @@
+import { Button } from "@react-md/button"
+import { Checkbox, Form, TextField } from "@react-md/form"
+import { FontIcon } from "@react-md/icon"
 import React from "react"
+import { CopyToClipboard } from "react-copy-to-clipboard"
+import CopyTest from "../components/CopyTest"
+import FormSelect from "../components/FormSelect"
+import Hr from "../components/Hr"
 import Layout from "../components/Layout"
 import SEO from "../components/SEO"
-import CopyTest from "../components/CopyTest"
-
-import { Button } from "@react-md/button"
-import { Form, Checkbox, TextField } from "@react-md/form"
-import { FontIcon } from "@react-md/icon"
-
-import { CopyToClipboard } from "react-copy-to-clipboard"
 //import useClipboard from "../hooks/useClipobard"
 import useCopyToClipboard from "../utils/useCopyToClipboard"
+
+
 
 const Example = ({ location }) => {
   const siteTitle = "All about Example"
@@ -50,6 +52,8 @@ const Example = ({ location }) => {
   return (
     <Layout location={location} title={siteTitle}>
       <SEO title="Test" />
+      <FormSelect />
+      <Hr />
       <CopyTest />
       <Button
         theme="secondary"

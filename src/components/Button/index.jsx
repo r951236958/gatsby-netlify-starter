@@ -1,21 +1,32 @@
-import React from "react"
+import { Button as RMDButton } from "@react-md/button";
+import PropTypes from 'prop-types';
+import React from "react";
+import "./styles.scss";
 
-import "./styles.scss"
 
-const Button = ({ children, className, ...otherProps }) => {
+const Button = ({ children, themeType, theme, buttonType, ...otherProps }) => {
   return (
-    <button
-      className={`${className || ""} btn-custom`}
+    <RMDButton 
+     themeType={themeType}
+     theme={theme}
+     buttonType={buttonType}
       {...otherProps}
-      style={{
-        backgroundColor: "var(--btn-bg)",
-        borderColor: "var(--btn-border)",
-        color: "var(--btnText)",
-      }}
     >
       {children}
-    </button>
+    </RMDButton>
   )
 }
 
 export default Button
+
+Button.defaultProps = {
+  theme: `clear`,
+  themeType: `contained`,
+  buttonType: ``,
+}
+
+Button.propTypes = {
+  theme: PropTypes.string,
+  themeType: PropTypes.string,
+  buttonType: PropTypes.string,
+}

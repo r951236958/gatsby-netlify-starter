@@ -1,6 +1,7 @@
 @import "./theme";
 
 @import "~@react-md/theme/dist/color-palette";
+$rmd-theme-dark-elevation: true;
 $rmd-theme-light: false;
 $rmd-theme-primary: $rmd-blue-grey-500;
 $rmd-theme-secondary: $rmd-amber-a-400;
@@ -56,4 +57,9 @@ body.light,
   display: grid;
   grid-row-gap: 1rem;
   grid-template-columns: minmax(0, 1fr);
+}
+
+.elevation {
+  @include rmd-elevation(5);
+  @include rmd-theme-dark-elevation(5, true);
 }
