@@ -15,6 +15,12 @@ export default [
     icon: <FontIcon>insert_invitation</FontIcon>,
   },
   {
+    name: "批注詞",
+    link:
+      "https://docs.google.com/document/d/1v-Ttj7IFEgzA0Bo_WclSQp1nc-Ek7GPQrHZCerHK8hM/edit",
+    icon: <FontIcon>text_snippet</FontIcon>,
+  },
+  {
     name: "計算",
     link:
       "https://docs.google.com/spreadsheets/d/1cCY030BQSbDku2rkaoIjxMFN3U3ePLJSsnWG6qNHR8w/edit#gid=0",
@@ -27,7 +33,7 @@ export default [
     icon: <FontIcon>group_add</FontIcon>,
   },
   {
-    name: "其他",
+    name: "採購部",
     link:
       "https://docs.google.com/spreadsheets/d/1TBm2PKXAb9ihChkjfeFgtiCJ7wk8KV6K7NvM5_RkhoQ/edit#gid=0",
     icon: <FontIcon>folder_shared</FontIcon>,

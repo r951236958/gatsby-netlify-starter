@@ -1,13 +1,20 @@
 import { Link, graphql, useStaticQuery } from "gatsby"
 import React from "react"
 import styled from "styled-components"
+////import { GlobalStyles, theme } from "../../utils/styles-global"
+//import UseTheme from "../../hooks/use-theme"
 import { rhythm, scale } from "../../utils/typography"
 import Navbar from "../Navbar"
-import CodeBlockStyles from "../../components/Code/styles/code-global"
+import Footer from "../Footer"
+import BSFooter from "../BSFooter"
+import Container from "react-bootstrap/Container"
+import CodeBlockStyles from "../../utils/code-global"
 import { AppSizeListener } from "@react-md/utils"
 import ScrollTopButton from "../ScrollTopButton"
 
 function Layout({ location, title, children }) {
+  //const setTheme = UseTheme()
+
   const data = useStaticQuery(graphql`
     query SiteTitleQuery {
       site {
@@ -27,7 +34,7 @@ function Layout({ location, title, children }) {
   const Header = () => {
     if (location.pathname === rootPath || location.pathname === blogPath) {
       return (
-        <header>
+        <div>
           <h1
             style={{
               ...scale(1.5),
@@ -46,11 +53,11 @@ function Layout({ location, title, children }) {
               {title}
             </Link>
           </h1>
-        </header>
+        </div>
       )
     } else {
       return (
-        <header>
+        <div>
           <h3
             style={{
               fontFamily: `Montserrat, sans-serif`,
@@ -68,7 +75,7 @@ function Layout({ location, title, children }) {
               {title}
             </Link>
           </h3>
-        </header>
+        </div>
       )
     }
   }
@@ -92,14 +99,12 @@ function Layout({ location, title, children }) {
               padding: `${rhythm(1.5)} ${rhythm(3 / 4)}`,
             }}
           >
-            <Header />
-            <main>{children}</main>
+            <Container>
+              <Header />
+              <main>{children}</main>
+            </Container>
           </div>
-          <Footer>
-            © {new Date().getFullYear()}, Built with
-            {` `}
-            <a href="https://www.gatsbyjs.org">Gatsby</a>
-          </Footer>
+          <BSFooter />
           <ScrollTopButton scrollStepInPx="150" delayInMs="5" />
         </Wrapper>
       </div>
@@ -109,11 +114,6 @@ function Layout({ location, title, children }) {
 
 const Wrapper = styled.div`
   min-height: 100vh;
-`
-
-const Footer = styled.footer`
-  text-align: center;
-  margin: 24px;
 `
 
 export default Layout

@@ -1,17 +1,15 @@
 import React from "react"
 import Layout from "../components/Layout"
+import ReactClipboardDemo from "../components/ReactClipboardDemo"
 import SEO from "../components/SEO"
 
-import List from "../components/ConfigurableDemo"
-
 const Test = ({ location }) => {
-  const siteTitle = "Hi"
+  const siteTitle = "All about Test"
 
   return (
     <Layout location={location} title={siteTitle}>
-      <SEO title="I'm Test" />
-
-      <List />
+      <SEO title="Test" />
+      <ReactClipboardDemo />
     </Layout>
   )
 }

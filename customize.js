@@ -4,11 +4,11 @@
 const config = {
   /* Site
   ========================================= */
-  title: `gatsby-blog-mdx`, // Displayed in header
-  description: `This is my blog`, // Site description
+  title: `Gatsby Starter Personal Blog`, // Displayed in header
+  description: `A starter personal blog with styled components, dark mode, and Netlify CMS.`, // Site description
   maxWidth: "768", // Max width of website
   enableAbout: true, // Enables about page
-  siteUrl: `https://yourDomain.com/`, // For sitemap & RSS feed
+  siteUrl: `https://gatsby-starter-blog-demo.netlify.com/`, // For sitemap & RSS feed
   useScrollIndicator: true, // Use scroll indicator on top of screen in posts
 
   /* Profile
@@ -23,16 +23,39 @@ const config = {
       accountName & emailAddress: leave blank ("") to disable
       showHeaderIcon: shows social media icon in header. When true, must have account name set
   ========================================= */
-  socialMediaLinks: {
-    email: { emailAddress: "", showHeaderIcon: true },
-    github: { accountName: "", showHeaderIcon: true },
-    facebook: { accountName: "", showHeaderIcon: true },
-    instagram: { accountName: "", showHeaderIcon: true },
-    twitter: { accountName: "", showHeaderIcon: true },
-    linkedIn: { accountName: "", showHeaderIcon: true }, // Use URL after "linkedin.com/"
-    medium: { accountName: "", showHeaderIcon: true }, // Use URL after "medium.com/@"
+  social: {
+    twitter: `gatsbyjs`,
   },
+  //socialMediaLinks: {
+  //  email: { emailAddress: "", showHeaderIcon: true },
+  //  github: { accountName: "", showHeaderIcon: true },
+  //  facebook: { accountName: "", showHeaderIcon: true },
+  //  instagram: { accountName: "", showHeaderIcon: true },
+  //  twitter: { accountName: "", showHeaderIcon: true },
+  //  linkedIn: { accountName: "", showHeaderIcon: true }, // Use URL after "linkedin.com/"
+  //  medium: { accountName: "", showHeaderIcon: true }, // Use URL after "medium.com/@"
+  //},
 
+  /* Navbar Link
+  ========================================= */
+  menuLinks: [
+    {
+      name: "About",
+      link: "/about",
+    },
+    {
+      name: "Blog",
+      link: "/blog/",
+    },
+    {
+      name: "Test",
+      link: "/test",
+    },
+    {
+      name: "Link",
+      link: "/bookmarks",
+    },
+  ],
   /* Social Media Share Buttons--available below every post
   ========================================= */
   shareButtons: {

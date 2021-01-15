@@ -15,7 +15,7 @@ const propTypes = {
   text: PropTypes.string,
 }
 
-const ClipBoard = ({
+const ClipBoardPolyDemo = ({
   children,
   component,
   data,
@@ -81,4 +81,4 @@ const ClipBoard = ({
 
 ClipBoard.propTypes = propTypes
 
-export default ClipBoard
+export default ClipBoardPolyDemo

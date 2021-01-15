@@ -2,6 +2,8 @@
 import "typeface-merriweather"
 import "typeface-montserrat"
 import "./src/styles/global.scss"
+import "gatsby-remark-vscode/styles.css"
+import "bootstrap/dist/css/bootstrap-grid.min.css"
 //require("prismjs/themes/prism-okaidia.css")
 //require("prismjs/plugins/command-line/prism-command-line.css")
 //require("prismjs/plugins/toolbar/prism-toolbar.css")

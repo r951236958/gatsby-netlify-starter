@@ -2,6 +2,9 @@
 @import "~@react-md/elevation/dist/mixins";
 @import "~@react-md/app-bar/dist/mixins";
 @import "~@react-md/typography/dist/mixins";
+@import '~@react-md/list/dist/mixins';
+@import '~@react-md/theme/dist/mixins';
+@import '~@react-md/button/dist/mixins';
 
 .container {
   @include rmd-elevation(6);
@@ -64,6 +67,12 @@
   }
 }
 
+.nav {
+    padding-top: 0.75rem;
+    padding-bottom: 0.75rem;
+    position: relative;
+}
+
 .navLink {
   margin-right: 1rem;
 
@@ -73,5 +82,26 @@
 
   *.a {
     overflow: hidden;
+  }
+}
+
+.navitems {
+  margin-right: 1rem;
+
+  @include rmd-utils-rtl {
+    margin-right: 1rem;
+  }
+
+  *.a {
+    overflow: hidden;
+  }
+}
+
+.link {
+  @include rmd-button-theme(color);
+
+  &:visited,
+  &:hover {
+    @include rmd-button-theme(color);
   }
 }

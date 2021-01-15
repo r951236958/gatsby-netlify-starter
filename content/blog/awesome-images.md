@@ -10,7 +10,7 @@ description: Fix for gatsby-plugin-mdx and gatsby-remark-images
 
 First, in your `static/admin/config.yml`, make sure you have the following:
 
-```
+```yaml
 media_folder: content/assets
 public_folder: ../assets
 ```

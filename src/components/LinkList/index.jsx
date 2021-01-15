@@ -1,9 +1,11 @@
 import React from "react"
 import { Divider } from "@react-md/divider"
 //import Link from "../Link"
-import { Link } from "@react-md/link"
+import { Link as RMDRouter } from "@react-md/link"
+import { Link as RouterLink } from "gatsby"
 import cn from "classnames"
 import { buttonThemeClassNames } from "@react-md/button"
+import { MenuItemLink } from "@react-md/menu"
 import { List, ListItem } from "@react-md/list"
 import Container from "./Container.jsx"
 import mylist from "./mylist"
@@ -39,19 +41,21 @@ LinkStyledButton.defaultProps = {
   buttonType: "text",
 }
 
-const LinkList = () => (
-  <Container>
-    <List>
-      {mylist.map(({ name, link, icon }) => (
-        <ListItem id={name} key={name} leftAddon={icon}>
-          <LinkStyledButton href={link} target="_blank">
-            {name}
-          </LinkStyledButton>
-          <Divider />
-        </ListItem>
-      ))}
-    </List>
-  </Container>
-)
-
+const LinkList = () => {
+  const MenuLink = props => <MenuItemLink {...props} component={RouterLink} />
+  return (
+    <Container>
+      <List>
+        {mylist.map(({ name, link, icon }) => (
+          <ListItem id={name} key={name} leftAddon={icon}>
+            <MenuLink href={link} target="_blank">
+              {name}
+            </MenuLink>
+            <Divider />
+          </ListItem>
+        ))}
+      </List>
+    </Container>
+  )
+}
 export default LinkList

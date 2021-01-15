@@ -1,35 +1,41 @@
 import React from "react"
-import cn from "classnames"
-//import { Link as RouterLink } from "gatsby"
 //import { Link as RMDLink } from "@react-md/link"
+import { MenuItemLink as RMDLink } from "@react-md/menu"
 import { Link as RouterLink } from "gatsby"
-import { buttonThemeClassNames } from "@react-md/button"
-
-import styles from "./Link.module.scss"
-
-//const NavLink = props => <RMDLink component={RouterLink} {...props} />
 
 const Link = ({
-  className,
-  theme,
-  themeType,
-  buttonType,
-  disabled,
   children,
+  shallow,
+  scroll,
+  replace,
+  to,
+  passHref,
   ...props
-}) => (
-  <RouterLink
-    {...props}
-    className={buttonThemeClassNames({
-      disabled,
-      theme,
-      themeType,
-      buttonType,
-      className: cn(styles.link, className),
-    })}
-  >
-    {children}
-  </RouterLink>
-)
+}) => {
+  if (to.startsWith("http")) {
+    return (
+      <RMDLink {...props} href={to}>
+        {children}
+      </RMDLink>
+    )
+  }
+  const Link = props => <RMDLink {...props} component={RouterLink} />
+  return (
+    <RouterLink
+      {...props}
+      shallow={shallow}
+      scroll={scroll}
+      replace={replace}
+      to={to}
+      passHref={passHref}
+    >
+      {children}
+    </RouterLink>
+  )
+}
+
+Link.defaultProps = {
+  passHref: true,
+}
 
 export default Link

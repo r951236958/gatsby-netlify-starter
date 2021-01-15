@@ -1,32 +1,7 @@
+const config = require("./customize")
+
 module.exports = {
-  siteMetadata: {
-    // edit below
-    title: `Gatsby Starter Personal Blog`,
-    author: `Gatsby`,
-    description: `A starter personal blog with styled components, dark mode, and Netlify CMS.`,
-    siteUrl: `https://gatsby-starter-blog-demo.netlify.com/`,
-    social: {
-      twitter: `gatsbyjs`,
-    },
-    menuLinks: [
-      {
-        name: "About",
-        link: "/about",
-      },
-      {
-        name: "Blog",
-        link: "/blog/",
-      },
-      {
-        name: "Emp",
-        link: "/example",
-      },
-      {
-        name: "Test",
-        link: "/test",
-      },
-    ],
-  },
+  siteMetadata: config,
   flags: {
     FAST_DEV: true,
     //FAST_REFRESH: true,
@@ -295,5 +270,30 @@ module.exports = {
     },
     `gatsby-plugin-sass`,
     `gatsby-plugin-dark-mode`,
+    {
+      resolve: `gatsby-transformer-remark`,
+      options: {
+        plugins: [
+          {
+            resolve: `gatsby-remark-vscode`,
+            options: {
+              theme: {
+                theme: {
+                  default: "Solarized Dark",
+                  media: [
+                    {
+                      // Longhand for `dark` option.
+                      // Don’t forget the parentheses!
+                      match: "(prefers-color-scheme: dark)",
+                      theme: "Dark",
+                    },
+                  ],
+                },
+              },
+            },
+          },
+        ],
+      },
+    },
   ],
 }
